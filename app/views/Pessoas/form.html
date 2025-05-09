@@ -4,16 +4,26 @@
 
 <h1>Cadastro de Pessoa</h1>
 
-<form action="/pessoas/salvar">
-	<div class="mb-3">
-			<label class="form-label">Nome:</label>
-			<input class="form-control" type="text" name="pessoa.nome" />
-		</div>
-		
-		<div class="mb-3">
-			<label class="form-label">Email:</label>
-			<input class="form-control" type="text" name="pessoa.email" />
-		</div>
-		
-		<input class="btn btn-primary" type="submit" />
-</form>
+<div class="container">
+       <div class="row justify-content-center">
+           <div class="col-md-4">
+               <div class="card shadow-lg p-4">
+                   <h1 class="text-center text-primary">Login</h1>
+                   <form id="loginForm" action = "/pessoas/salvar">
+                       <div class="mb-3">
+                           <label for="email" class="form-label">Nome</label>
+                           <input type="Text"  name = "pessoa.nome" id="email" class="form-control" placeholder="Digite seu Nome">
+                       </div>
+                       <div class="mb-3">
+                           <label for="password" class="form-label">Email</label>
+                           <input type="text" name ="pessoa.email" id="password" class="form-control" placeholder="Digite sua senha">
+                       </div>
+                     
+                           
+                       </div>
+                       <button type="submit" class="btn btn-primary w-100">Login</button>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>

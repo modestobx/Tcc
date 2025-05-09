@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Detalhamento' /}
+
+
+<table class="table table-dark">
+   #{list items:lista, as:'p'}
+   <tbody>
+       <tr>
+		 <th>
+		   <p>ID:</p> 
+		</th>
+         <td scope="row">
+			<p>
+			 ${p?.nome} (${p?.email}) |
+			 <a href="@{Pessoas.remover(p.id)}">REMOVER</a>
+			</p>
+		 </td>
+       </tr>
+   </tbody>
+    #{/list}
+ </table>
+ <a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar novo</a>
