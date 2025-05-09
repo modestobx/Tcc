@@ -2,7 +2,8 @@
 #{set title:'Formulario' /}
 
 
-<h1>Cadastro de Pessoa</h1>
+
+
 
 <div class="container">
        <div class="row justify-content-center">
@@ -10,13 +11,14 @@
                <div class="card shadow-lg p-4">
                    <h1 class="text-center text-primary">Login</h1>
                    <form id="loginForm" action = "/pessoas/salvar">
+                           <input type="hidden"  name = "pessoa.id" value= "${pessoa?.id}">
                        <div class="mb-3">
                            <label for="email" class="form-label">Nome</label>
-                           <input type="Text"  name = "pessoa.nome" id="email" class="form-control" placeholder="Digite seu Nome">
+                           <input type="Text"  name = "pessoa.nome" value= "${pessoa?.nome}" id="email" class="form-control" placeholder="Digite seu Nome">
                        </div>
                        <div class="mb-3">
                            <label for="password" class="form-label">Email</label>
-                           <input type="text" name ="pessoa.email" id="password" class="form-control" placeholder="Digite sua senha">
+                           <input type="text" name ="pessoa.email"value= "${pessoa?.email}" id="password" class="form-control" placeholder="Digite sua senha">
                        </div>
                      
                            

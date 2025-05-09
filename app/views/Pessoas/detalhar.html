@@ -2,14 +2,29 @@
 #{set title:'Detalhamento' /}
 
 
-<h1>Detalhamento de Pessoa</h1>
 
-<div class="container">
-
-	
-<p>${pessoa.nome}</p>
-<p>${pessoa.email}</p>
-
-<a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar novo</a>
-<a class="btn btn-primary" href="@{Pessoas.listar}">Voltar para a Lista de Pessoas</a>
-	 </div>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white">
+          <h4 class="mb-0">Detalhes da Pessoa</h4>
+        </div>
+        <div class="card-body bg-light">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Nome:</label>
+            <p class="form-control-plaintext">${pessoa.nome}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Email:</label>
+            <p class="form-control-plaintext">${pessoa.email}</p>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar novo</a>
+          <a class="btn btn-secondary" href="@{Pessoas.listar}">Voltar para a Lista de Pessoas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

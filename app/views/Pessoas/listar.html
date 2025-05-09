@@ -1,22 +1,37 @@
 #{extends 'main.html' /}
-#{set title:'Detalhamento' /}
+#{set title:'Listagem' /}
 
 
-<table class="table table-dark">
-   #{list items:lista, as:'p'}
-   <tbody>
-       <tr>
-		 <th>
-		   <p>ID:</p> 
-		</th>
-         <td scope="row">
-			<p>
-			 ${p?.nome} (${p?.email}) |
-			 <a href="@{Pessoas.remover(p.id)}">REMOVER</a>
-			</p>
-		 </td>
-       </tr>
-   </tbody>
-    #{/list}
- </table>
- <a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar novo</a>
+<div class="container my-5">
+  <div class="card bg-dark text-white shadow-lg">
+    <div class="card-header border-light">
+      <h4 class="mb-0">Lista de Pessoas</h4>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-dark table-hover table-bordered mb-0">
+        <thead class="table-light text-dark">
+          <tr>
+            <th style="width: 15%;">ID</th>
+            <th>Informações</th>
+            <th style="width: 15%;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          #{list items:lista, as:'p'}
+          <tr>
+            <td><strong>${p?.id}</strong></td>
+            <td>${p?.nome} (${p?.email})</td>
+            <td>
+              <a class="btn btn-sm btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>
+              <a class="btn btn-sm btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
+            </td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-end">
+      <a class="btn btn-primary" href="@{Pessoas.form}">Cadastrar novo</a>
+    </div>
+  </div>
+</div>

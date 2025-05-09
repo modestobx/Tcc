@@ -36,6 +36,11 @@ public class Pessoas extends Controller {
 		
 		listar();
 	}
+	public static void editar(Long id) {
+		Pessoa pessoa = Pessoa.findById(id);
+		renderTemplate("pessoas/form.html",pessoa);
+	}
+	
 }
 
 
