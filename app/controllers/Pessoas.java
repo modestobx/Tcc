@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Pessoa;
+import models.Status;
 import play.mvc.Controller;
 
 public class Pessoas extends Controller {
@@ -30,11 +31,12 @@ public class Pessoas extends Controller {
 		
 		List<Pessoa> lista = null;
 		if(termo == null) {
-			lista = Pessoa.findAll();
+			lista = Pessoa.find("status <> ?1", Status.INATIVO).fetch();	
 		}else {
-			lista = Pessoa.find("lower(nome) like ?1 "
-					+ "or lower(email) like ?1",
-					"%" + termo.toLowerCase() + "%").fetch();
+			lista = Pessoa.find("(lower(nome) like ?1 "
+					+ "or lower(email) like ?1) and status <> ?2",
+					"%" + termo.toLowerCase() + "%",
+					Status.INATIVO).fetch();
 		}
 		render(lista, termo);
 	}
@@ -42,7 +44,8 @@ public class Pessoas extends Controller {
 
 	public static void remover(long id) {
 		Pessoa pe = Pessoa.findById(id);
-		pe.delete();
+		pe.status = Status.INATIVO;
+		pe.save();
 		
 		listar(null);
 	}
