@@ -26,15 +26,25 @@ public class Pessoas extends Controller {
 		detalhar(pessoa);
 		
 	}
-	public static void listar() {
-		List<Pessoa> lista = Pessoa.findAll();
-		render(lista);
+	public static void listar(String termo) {
+		
+		List<Pessoa> lista = null;
+		if(termo == null) {
+			lista = Pessoa.findAll();
+		}else {
+			lista = Pessoa.find("lower(nome) like ?1 "
+					+ "or lower(email) like ?1",
+					"%" + termo.toLowerCase() + "%").fetch();
+		}
+		render(lista, termo);
 	}
+	
+
 	public static void remover(long id) {
 		Pessoa pe = Pessoa.findById(id);
 		pe.delete();
 		
-		listar();
+		listar(null);
 	}
 	public static void editar(Long id) {
 		Pessoa pessoa = Pessoa.findById(id);
@@ -42,5 +52,4 @@ public class Pessoas extends Controller {
 	}
 	
 }
-
 
