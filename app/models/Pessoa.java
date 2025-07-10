@@ -2,9 +2,17 @@ package models;
 
 import play.mvc.Controller;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import play.db.jpa.Model;
 
@@ -18,7 +26,31 @@ public class Pessoa extends Model {
 	@Enumerated(EnumType.STRING)
 	public Status status;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date dataNascimento;
+	
+	@Transient
+	public Integer idade;
+	
 	public Pessoa() {
 		this.status = Status.ATIVO;
 	}
-}
+	public int getIdade() {
+	    if (dataNascimento == null) {
+	        return 0; 
+	    }
+
+	    if (idade == null) {
+	        LocalDate localDataNascimento = dataNascimento.toInstant()
+	            .atZone(ZoneId.systemDefault())
+	            .toLocalDate();
+
+	        LocalDate dataCorrente = LocalDate.now();
+	        Period period = Period.between(localDataNascimento, dataCorrente);
+	        idade = period.getYears();
+	    }
+
+	    return idade;
+	}
+	
+}  

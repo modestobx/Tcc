@@ -34,7 +34,7 @@
           #{list items:lista, as:'p'}
           <tr>
             <td><strong>${p?.id}</strong></td>
-            <td>${p?.nome} (${p?.email})</td>
+            <td>${p?.nome} (${p?.email} - ${p.idade})</td>
             <td>
               <a class="btn btn-sm btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>
               <a class="btn btn-sm btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
