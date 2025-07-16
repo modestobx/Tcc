@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -22,6 +23,10 @@ public class Pessoa extends Model {
 
 	public String nome;
 	public String email;
+	
+	@ManyToOne
+	public Departamento departamento;
+
 	
 	@Enumerated(EnumType.STRING)
 	public Status status;

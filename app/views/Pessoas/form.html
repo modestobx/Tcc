@@ -25,6 +25,17 @@
 					   		<input class="form-control" type="date"
 					   			name="pessoa.dataNascimento" value="${pessoa?.dataNascimento}" />
 					   	</div>
+						<div class="mb-3">
+								<label class="form-label">Departamento:</label>
+								<select class="form-select" name="pessoa.departamento.id">
+									#{list items:departamentos, as:'d'}
+										<option value="${d.id}"> 
+											${d.id == pessoa?.departamento.id ? 'selected' : ''}>
+												${d.nome}
+										 </option>
+									#{/list}
+								</select>
+							</div>
                      
                            
                        </div>
